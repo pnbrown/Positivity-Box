@@ -4,18 +4,12 @@ from configparser import ConfigParser
 import json
 
 
-"""
-config = ConfigParser()
-config.read('config/config.txt')
-token = config.get('auth', 'token')
-domain = config.get('instance', 'prod')
-headers = {'Authorization': 'Bearer {}'.format(token)}
-"""
-
 def set_initial_state():
     pd.set_option('display.max_colwidth', 1000)
-    api_key = 0
-    form_id = 0
+    config = ConfigParser()
+    config.read('config.txt')
+    api_key = config.get('auth', 'api_key')
+    form_id = config.get('auth', 'form_id')
     constants = [form_id, api_key]
     return constants
 
