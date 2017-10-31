@@ -8,8 +8,10 @@ def set_initial_state():
     pd.set_option('display.max_colwidth', 1000)
     config = ConfigParser()
     config.read('config.txt')
-    api_key = config.get('auth', 'api_key')
-    form_id = config.get('auth', 'form_id')
+    api_key = '30e4edd8b85827f6fe428dfadcb64a83b5638854'
+    form_id = 'o5vA6G'
+    # api_key = config.get('auth', 'api_key')
+    # form_id = config.get('auth', 'form_id')
     constants = [form_id, api_key]
     return constants
 
@@ -50,9 +52,10 @@ def parse_data(raw_data):
 
 def print_quote(quotes, quotes_entry):
     """Returns a quote from our list."""
-    print(quotes[quotes_entry].strip('\''))
+    quote = quotes[quotes_entry].strip('\'')
     quotes_entry += 1
-    return quotes_entry
+    values = [quote, quotes_entry]
+    return values
 
 
 def yes_or_no():
@@ -77,7 +80,7 @@ def yes_or_no():
     else:
         return False
 
-def program_test():
+def program_run():
     # Set initial values
     constants = set_initial_state()
     quotes_entry = 0
@@ -89,17 +92,16 @@ def program_test():
 
     # Parse data
     quotes = parse_data(raw_data)
+    return quotes
 
-    # Offer quotes
-    while run_program:
-        print("Would you like to see a quote? ")
-        see_quote = yes_or_no()
 
-        if see_quote:
-            quotes_entry = print_quote(quotes, quotes_entry)
-
-        print("Would you like to exit the program? ")
-        run_program = bool(not (yes_or_no()))
-
-"""Program entry point"""
-# program_test()
+    # # Offer quotes
+    # while run_program:
+    #     print("Would you like to see a quote? ")
+    #     see_quote = yes_or_no()
+    #
+    #     if see_quote:
+    #         quotes_entry = print_quote(quotes, quotes_entry)
+    #
+    #     print("Would you like to exit the program? ")
+    #     run_program = bool(not (yes_or_no()))

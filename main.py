@@ -1,22 +1,26 @@
 import sys
-
-from PyQt5.QtWidgets import QApplication, QDialog
+import functions as pb
+from PyQt5.QtWidgets import QApplication, QDialog, QWidget, QPushButton
+from PyQt5.QtCore import pyqtSignal, QObject, pyqtSlot
 from design import Ui_Dialog
-# from test_environment.design import Ui_Dialog
+
 
 class ImageDialog(QDialog, Ui_Dialog):
     def __init__(self):
         super(ImageDialog, self).__init__()
 
+        # # Start Program
+        # quotes = pb.program_run()
+        # quotes_entry = 0
+        # pb.print_quote(quotes, quotes_entry)
+
         # Set up the user interface from Designer.
         self.setupUi(self)
 
-        # Make some local modifications.
-        self.colorDepthCombo.addItem("2 colors (1 bit per pixel)")
-
         # Connect up the buttons.
-        self.okButton.clicked.connect(self.accept)
-        self.cancelButton.clicked.connect(self.reject)
+
+        self.Exit.clicked.connect(self.reject)
+
 
 
 app = QApplication(sys.argv)
