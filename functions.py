@@ -77,28 +77,29 @@ def yes_or_no():
     else:
         return False
 
+def program_test():
+    # Set initial values
+    constants = set_initial_state()
+    quotes_entry = 0
+    run_program = True
+    see_quote = False
+
+    # Bring in data
+    raw_data = fill_dictionary_from_api(constants[0], constants[1])
+
+    # Parse data
+    quotes = parse_data(raw_data)
+
+    # Offer quotes
+    while run_program:
+        print("Would you like to see a quote? ")
+        see_quote = yes_or_no()
+
+        if see_quote:
+            quotes_entry = print_quote(quotes, quotes_entry)
+
+        print("Would you like to exit the program? ")
+        run_program = bool(not (yes_or_no()))
 
 """Program entry point"""
-
-# Set initial values
-constants = set_initial_state()
-quotes_entry = 0
-run_program = True
-see_quote = False
-
-# Bring in data
-raw_data = fill_dictionary_from_api(constants[0], constants[1])
-
-# Parse data
-quotes = parse_data(raw_data)
-
-# Offer quotes
-while run_program:
-    print("Would you like to see a quote? ")
-    see_quote = yes_or_no()
-
-    if see_quote:
-        quotes_entry = print_quote(quotes, quotes_entry)
-
-    print("Would you like to exit the program? ")
-    run_program = bool(not (yes_or_no()))
+program_test()
