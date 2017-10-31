@@ -1,27 +1,33 @@
 import sys
-import design as gui
-import functions as pb
 
-from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QDesktopWidget, QLabel, QMainWindow
-from PyQt5.QtGui import QImage, QPalette, QBrush, QIcon
-from PyQt5.QtCore import pyqtSlot, QSize
+from PyQt5.QtWidgets import QApplication, QDialog
+from design import Ui_Dialog
+# from test_environment.design import Ui_Dialog
 
-
-class ExampleApp(QMainWindow, gui.Ui_Dialog):
+class ImageDialog(QDialog, Ui_Dialog):
     def __init__(self):
-        super(self.__class__, self).__init__()
+        super(ImageDialog, self).__init__()
+
+        # Set up the user interface from Designer.
         self.setupUi(self)
 
+        # Make some local modifications.
+        self.colorDepthCombo.addItem("2 colors (1 bit per pixel)")
 
-def main():
-    app = QApplication(sys.argv)
-    form = ExampleApp()
-    form.show()
-    app.exec_()
+        # Connect up the buttons.
+        self.okButton.clicked.connect(self.accept)
+        self.cancelButton.clicked.connect(self.reject)
 
 
-if __name__ == '__main__':
-    main()
+app = QApplication(sys.argv)
+window = QDialog()
+ui = Ui_Dialog()
+ui.setupUi(window)
+
+window.show()
+sys.exit(app.exec_())
+
+
 
     # class App(QWidget):
     #     def __init__(self):

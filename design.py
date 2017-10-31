@@ -38,5 +38,4 @@ class Ui_Dialog(object):
         self.actionNext_Quote.setToolTip(_translate("Dialog", "Push here to see the next quote"))
         self.actionNext_Quote.setShortcut(_translate("Dialog", "Ctrl+Right"))
 
-# import background_qc
-
+import resources_rc

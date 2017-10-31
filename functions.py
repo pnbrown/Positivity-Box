@@ -102,4 +102,4 @@ def program_test():
         run_program = bool(not (yes_or_no()))
 
 """Program entry point"""
-program_test()
+# program_test()
