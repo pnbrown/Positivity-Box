@@ -6,10 +6,13 @@
 #
 # WARNING! All changes made in this file will be lost!
 
-from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtCore import pyqtSignal, QObject, pyqtSlot
-import functions as pb
 import sys
+
+from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtCore import pyqtSlot
+
+import functions as pb
+
 
 class Ui_Dialog(object):
     def setupUi(self, PositivityBox):
@@ -63,7 +66,6 @@ class Ui_Dialog(object):
             get_quotes = gathered_bool
         if quotes_num == (len(quotes_list)):
             self.textBrowser.setText("There are no quotes left to return. Please push Exit.")
-            return
         else:
             data = pb.print_quote(quotes_list, quotes_num)
             text = data[0]
@@ -73,6 +75,7 @@ class Ui_Dialog(object):
             self.textBrowser.setText(text)
             global function_call_values
             function_call_values = [get_quotes, quotes_entry, quotes_list]
+
 
     def setQuotes(self):
         global quotes_list
