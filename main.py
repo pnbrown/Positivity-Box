@@ -1,7 +1,5 @@
 import sys
-import functions as pb
-from PyQt5.QtWidgets import QApplication, QDialog, QWidget, QPushButton
-from PyQt5.QtCore import pyqtSignal, QObject, pyqtSlot
+from PyQt5.QtWidgets import QApplication, QDialog
 from design import Ui_Dialog
 
 

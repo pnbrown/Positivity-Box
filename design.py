@@ -52,7 +52,7 @@ class Ui_Dialog(object):
 
     @pyqtSlot()
     def newQuotePushed(self, get_quotes, quotes_num, quotes):
-        print(get_quotes)
+        # print(get_quotes)
         if not get_quotes:
             global quotes_list
             quotes_list = self.setQuotes()
@@ -61,9 +61,8 @@ class Ui_Dialog(object):
             global gathered_bool
             gathered_bool = True
             get_quotes = gathered_bool
-        if quotes_num == (len(quotes) - 1):
+        if quotes_num == (len(quotes_list)):
             self.textBrowser.setText("There are no quotes left to return. Please push Exit.")
-
             return
         else:
             data = pb.print_quote(quotes_list, quotes_num)
@@ -75,10 +74,10 @@ class Ui_Dialog(object):
             global function_call_values
             function_call_values = [get_quotes, quotes_entry, quotes_list]
 
-
     def setQuotes(self):
         global quotes_list
         quotes_list = pb.program_run()
+        print(quotes_list)
         return quotes_list
 
 

@@ -8,10 +8,8 @@ def set_initial_state():
     pd.set_option('display.max_colwidth', 1000)
     config = ConfigParser()
     config.read('config.txt')
-    api_key = '30e4edd8b85827f6fe428dfadcb64a83b5638854'
-    form_id = 'o5vA6G'
-    # api_key = config.get('auth', 'api_key')
-    # form_id = config.get('auth', 'form_id')
+    api_key = config.get('auth', 'api_key')
+    form_id = config.get('auth', 'form_id')
     constants = [form_id, api_key]
     return constants
 
@@ -59,7 +57,7 @@ def print_quote(quotes, quotes_entry):
 
 
 def yes_or_no():
-    """Asks a user to choose yes or no. Mostly error handling. Returns boolean"""
+    """Asks a user to choose yes or no. Mostly error handling. Returns boolean."""
     response = input("Please enter y or n. ")
     invalid_response = True
     while invalid_response:
@@ -83,12 +81,14 @@ def yes_or_no():
 def program_run():
     # Set initial values
     constants = set_initial_state()
+    # print(constants)
     quotes_entry = 0
     run_program = True
     see_quote = False
 
     # Bring in data
     raw_data = fill_dictionary_from_api(constants[0], constants[1])
+    # print(raw_data)
 
     # Parse data
     quotes = parse_data(raw_data)
